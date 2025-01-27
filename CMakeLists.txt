@@ -8,5 +8,5 @@ include_directories(src)
 
 add_executable (RayTracingInOneWeekend
 	src/main.cpp
-)
+	src/vec3.h)
 
