@@ -6,4 +6,8 @@
 
 Generating a basic Portable Pixmap file and used ImageMagick to convert to png
 
+### Generating a linearly blended gradient by sending rays into the scene
 
+<img alt="RTgradient.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convRtGradient.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+
+Sending rays into the scene and using lerp for blend creating a gradient (Tweaked some values myself in rayColor to create this indigo-green gradient)
