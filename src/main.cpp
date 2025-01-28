@@ -3,7 +3,20 @@
 #include "ray.h"
 #include <iostream>
 
+bool hitSphere(const point3& center, double radius, const ray& r) {
+	vec3 centerVec = center - r.origin();
+	auto a = dot(r.direction(), r.direction());
+	auto b = dot(-2 * r.direction(), centerVec);
+	auto c = dot(centerVec, centerVec) - radius * radius;
+	auto SphereEqDiscriminant = b * b - 4 * a * c;
+	return (SphereEqDiscriminant >= 0);
+}
+
 color rayColor(const ray& r) {
+	if (hitSphere(point3(0, 0, -1), 0.5, r))
+		return color(0.8, 0.3, 0.5);
+
+
 	auto unit_direction = unit_vector(r.direction());
 	auto a = 0.5 * (unit_direction.y() + 1.0);
 	return (1.0 - a) * color(0.0, 1.0, 0.0) + a * color(0.5, 0.0, 1.0);
