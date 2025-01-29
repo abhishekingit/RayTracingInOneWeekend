@@ -6,16 +6,16 @@
 
 double hitSphere(const point3& center, double radius, const ray& r) {
 	vec3 centerVec = center - r.origin();
-	auto a = dot(r.direction(), r.direction());
-	auto b = dot(-2 * r.direction(), centerVec);
-	auto c = dot(centerVec, centerVec) - radius * radius;
-	auto SphereEqDiscriminant = b * b - 4 * a * c;
+	auto a = r.direction().length_squared();
+	auto h = dot(r.direction(), centerVec);
+	auto c = centerVec.length_squared() - radius * radius;
+	auto SphereEqDiscriminant = h * h - 4 * a * c;
 	
 	if (SphereEqDiscriminant < 0) {
 		return -1.0;
 	}
 	else {
-		return(-b - std::sqrt(SphereEqDiscriminant)) / (2.0 * a);
+		return(h - std::sqrt(SphereEqDiscriminant)) / a;
 	}
 
 }
@@ -26,7 +26,6 @@ color rayColor(const ray& r) {
 		vec3 NormalV = unit_vector(r.aT(t) - point3(0, 0, -1));
 		return 0.5 * color(NormalV.x() + 1, NormalV.y() + 1, NormalV.z() + 1);
 	}
-
 
 	auto unit_direction = unit_vector(r.direction());
 	auto a = 0.5 * (unit_direction.y() + 1.0);
