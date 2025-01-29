@@ -1,20 +1,31 @@
 #include "color.h"
 #include "vec3.h"
 #include "ray.h"
+#include <cmath>
 #include <iostream>
 
-bool hitSphere(const point3& center, double radius, const ray& r) {
+double hitSphere(const point3& center, double radius, const ray& r) {
 	vec3 centerVec = center - r.origin();
 	auto a = dot(r.direction(), r.direction());
 	auto b = dot(-2 * r.direction(), centerVec);
 	auto c = dot(centerVec, centerVec) - radius * radius;
 	auto SphereEqDiscriminant = b * b - 4 * a * c;
-	return (SphereEqDiscriminant >= 0);
+	
+	if (SphereEqDiscriminant < 0) {
+		return -1.0;
+	}
+	else {
+		return(-b - std::sqrt(SphereEqDiscriminant)) / (2.0 * a);
+	}
+
 }
 
 color rayColor(const ray& r) {
-	if (hitSphere(point3(0, 0, -1), 0.5, r))
-		return color(0.8, 0.3, 0.5);
+	auto t = hitSphere(point3(0, 0, -1), 0.5, r);
+	if (t > 0.0) {
+		vec3 NormalV = unit_vector(r.aT(t) - point3(0, 0, -1));
+		return 0.5 * color(NormalV.x() + 1, NormalV.y() + 1, NormalV.z() + 1);
+	}
 
 
 	auto unit_direction = unit_vector(r.direction());
