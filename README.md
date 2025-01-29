@@ -18,4 +18,8 @@ Sending rays into the scene and using lerp for blend creating a gradient (Tweake
 
 A rudimentary image of Ray and Sphere Intersection without shading and reflection (Color separation logic in rayColor is based on discriminant of the equation for Ray and Sphere for a common 't')
 
+### Surface Normals and Shaded Sphere
 
+<img alt="ShadedSphere.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convShadedSphere.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+
+Adding surface normals for the sphere and computing the hit points of the ray and calculating surface normals and color mapping it
