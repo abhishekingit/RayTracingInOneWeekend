@@ -7,7 +7,7 @@ class sphere : public hittable_object {
 public:
 	sphere(const point3& center, double radius) : center(center), radius(std::fmax(0, radius)) {}
 	
-	bool hit(const ray& r, double tmin, double tmax, hit_record& rec) const override {
+	bool hit(const ray& r, interval tInterval, hit_record& rec) const override {
 		vec3 centerVec = center - r.origin();
 		auto a = r.direction().length_squared();
 		auto h = dot(r.direction(), centerVec);
@@ -22,9 +22,9 @@ public:
 		
 		auto root = (h - sqrtDisc) / a;
 
-		if (root <= tmin || tmax <= root) {
+		if (!tInterval.surrounds(root)) {
 			root = (h + sqrtDisc) / a;
-			if (root <= tmin || tmax <= root) {
+			if (!tInterval.surrounds(root)) {
 				return false;
 			}
 		}

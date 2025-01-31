@@ -18,6 +18,7 @@ inline double degree_to_radians(double degrees) {
 #include "ray.h"
 #include "vec3.h"
 #include "ray.h"
+#include "interval.h"
 
 
 #endif // !COMMON_CONSTANTS_H
