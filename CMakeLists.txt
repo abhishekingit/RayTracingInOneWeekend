@@ -10,5 +10,9 @@ add_executable (RayTracingInOneWeekend
 	src/main.cpp
 	src/vec3.h 
 	src/color.h
-	src/ray.h)
+	src/ray.h 
+	src/hittableObject.h
+	src/sphere.h
+	src/hittableList.h
+	src/commonConstants.h)
 
