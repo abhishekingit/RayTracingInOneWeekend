@@ -9,6 +9,7 @@ public:
 	double aspect_ratio = 1.0;
 	int image_width = 100;
 	int samples_per_pixel = 10;
+	int maxDepth = 10;
 
 
 	void render(const hittable_object& world) {
@@ -22,7 +23,7 @@ public:
 				//samples per pixel
 				for (int sample = 0; sample < samples_per_pixel; sample++) {
 					ray r = getRay(i, j);
-					pixelColor += rayColor(r, world);
+					pixelColor += rayColor(r, maxDepth, world);
 				}
 				write_color(std::cout, pixel_samples_scale * pixelColor);
 			}
@@ -76,10 +77,16 @@ private:
 		return vec3(randomDouble() - 0.5, randomDouble() - 0.5, 0);
 	}
 
-	color rayColor(const ray& r, const hittable_object& world) const {
+	color rayColor(const ray& r, int maxDepth, const hittable_object& world) const {
 		hit_record rec;
+
+		if (maxDepth <= 0) {
+			return color(0, 0, 0);
+		}
+
 		if (world.hit(r, interval(0, infinity), rec)) {
-			return 0.5 * (rec.normal + color(1, 1, 1));
+			vec3 randomRayDirection = randomVecOnHemisphere(rec.normal);
+			return 0.5 * rayColor(ray(rec.p, randomRayDirection), maxDepth - 1, world);
 		}
 
 		auto unit_direction = unit_vector(r.direction());

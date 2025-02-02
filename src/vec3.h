@@ -45,6 +45,14 @@ public:
 		return *this *= 1 / x;
 	}
 
+	static vec3 random() {
+		return vec3(randomDouble(), randomDouble(), randomDouble());
+	}
+
+	static vec3 random(double min, double max) {
+		return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
+	}
+
 	double magnitude() const {
 		return std::sqrt(length_squared());
 	}
@@ -99,6 +107,26 @@ inline vec3 cross(const vec3& first, const vec3& other) {
 
 inline vec3 unit_vector(const vec3& v) {
 	return v / v.magnitude();
+}
+
+inline vec3 randomUnitVector() {
+	while (true) {
+		auto tempVec = vec3::random(-1, 1);
+		auto genVecLengthSquared = tempVec.length_squared();
+		if (1e-160 < genVecLengthSquared && genVecLengthSquared <= 1) {
+			return tempVec / std::sqrt(genVecLengthSquared);
+		}
+	}
+}
+
+inline vec3 randomVecOnHemisphere(const vec3& surfaceNormal) {
+	vec3 randomVec = randomUnitVector();
+	if (dot(randomVec, surfaceNormal) > 0.0) {
+		return randomVec;
+	}
+	else {
+		return -randomVec;
+	}
 }
 
 #endif // !VEC3_H

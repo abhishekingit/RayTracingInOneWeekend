@@ -36,3 +36,9 @@ Creating abstractions for objects in the world and some more abstractions
 
 Using Localized supersampling for anti aliasing. Also tried a higher resolution (1920 x 1080) for this image
 Given that a PPM file is inefficient due to its large size caused by uncompressed pixel data, and that the book uses this format to generate the image because it is simple to create, there is some potential to parallelize the render loop to make this approach faster for high-resolution images.  
+
+### Diffused Materials by generating random hemisphere vectors
+
+<img alt="diffusedmaterial.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convDiffuseMaterial.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+
+Generating random hemisphere vectors
