@@ -8,6 +8,7 @@ public:
 
 	double aspect_ratio = 1.0;
 	int image_width = 100;
+	int samples_per_pixel = 10;
 
 
 	void render(const hittable_object& world) {
@@ -15,13 +16,15 @@ public:
 
 		std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-		for (int j = 0; j < image_height; j++) {
+		for (int j = 0; j < image_height; j++) {			
 			for (int i = 0; i < image_width; i++) {
-				auto pixelCenter = pixel00_loc + (i * pixelDeltaU) + (j * pixelDeltaV);
-				auto rayDirection = pixelCenter - center;
-				ray r1(center, rayDirection);
-				color pixelColor = rayColor(r1, world);
-				write_color(std::cout, pixelColor);
+				color pixelColor(0, 0, 0);
+				//samples per pixel
+				for (int sample = 0; sample < samples_per_pixel; sample++) {
+					ray r = getRay(i, j);
+					pixelColor += rayColor(r, world);
+				}
+				write_color(std::cout, pixel_samples_scale * pixelColor);
 			}
 
 		}
@@ -31,6 +34,7 @@ public:
 
 private:
 	int image_height;
+	double pixel_samples_scale;
 	point3 center;
 	point3 pixel00_loc;
 	vec3 pixelDeltaU;
@@ -39,6 +43,8 @@ private:
 	void initialize() {
 		image_height = int(image_width / aspect_ratio);
 		image_height = (image_height < 1) ? 1 : image_height;
+
+		pixel_samples_scale = 1.0 / samples_per_pixel;
 
 		center = point3(0, 0, 0);
 
@@ -56,6 +62,18 @@ private:
 		pixel00_loc = viewportUpperLeft + 0.5 * (pixelDeltaU + pixelDeltaV);
 
 
+	}
+
+	ray getRay(int i, int j) const {
+		auto offset = sample_square();
+		auto pixel_sample = pixel00_loc + ((i + offset.x()) * pixelDeltaU) + ((j + offset.y()) * pixelDeltaV);
+		auto rayOrigin = center;
+		auto rayDir = pixel_sample - rayOrigin;
+		return ray(rayOrigin, rayDir);
+	}
+
+	vec3 sample_square() const {
+		return vec3(randomDouble() - 0.5, randomDouble() - 0.5, 0);
 	}
 
 	color rayColor(const ray& r, const hittable_object& world) const {

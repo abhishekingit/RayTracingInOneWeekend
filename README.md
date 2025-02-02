@@ -29,3 +29,10 @@ Adding surface normals for the sphere and computing the hit points of the ray an
 <img alt="World.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convWorldImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
 
 Creating abstractions for objects in the world and some more abstractions
+
+### Adding Antialiasing and generating a high definition image
+
+<img alt="antiAliased.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convAntiAliased.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+
+Using Localized supersampling for anti aliasing. Also tried a higher resolution (1920 x 1080) for this image
+Given that a PPM file is inefficient due to its large size caused by uncompressed pixel data, and that the book uses this format to generate the image because it is simple to create, there is some potential to parallelize the render loop to make this approach faster for high-resolution images.  
