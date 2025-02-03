@@ -84,8 +84,8 @@ private:
 			return color(0, 0, 0);
 		}
 
-		if (world.hit(r, interval(0, infinity), rec)) {
-			vec3 randomRayDirection = randomVecOnHemisphere(rec.normal);
+		if (world.hit(r, interval(0.001, infinity), rec)) {
+			vec3 randomRayDirection = rec.normal + randomUnitVector();
 			return 0.5 * rayColor(ray(rec.p, randomRayDirection), maxDepth - 1, world);
 		}
 

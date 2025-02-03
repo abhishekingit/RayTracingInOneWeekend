@@ -42,3 +42,10 @@ Given that a PPM file is inefficient due to its large size caused by uncompresse
 <img alt="diffusedmaterial.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convDiffuseMaterial.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
 
 Generating random hemisphere vectors
+
+### Lambertian distribution
+
+<img alt="scatteringComparison.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/scatteringComparison.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+
+Non uniform scattering of rays or Lambertian distribution (R) and uniform scattering (L)
+The result on the right is a much accurate representation of diffuse reflection. It also has a tint of the background gradient consisting of blue and white.
