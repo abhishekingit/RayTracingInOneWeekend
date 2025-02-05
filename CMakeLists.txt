@@ -16,5 +16,6 @@ add_executable (RayTracingInOneWeekend
 	src/hittableList.h
 	src/commonConstants.h 
 	src/interval.h 
-	src/camera.h)
+	src/camera.h 
+	src/material.h)
 

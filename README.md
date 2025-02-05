@@ -32,7 +32,7 @@ Creating abstractions for objects in the world and some more abstractions
 
 ### Adding Antialiasing and generating a high definition image
 
-<img alt="antiAliased.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convAntiAliased.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="512px">
+<img alt="antiAliased.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convAntiAliased.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="1080px">
 
 Using Localized supersampling for anti aliasing. Also tried a higher resolution (1920 x 1080) for this image
 Given that a PPM file is inefficient due to its large size caused by uncompressed pixel data, and that the book uses this format to generate the image because it is simple to create, there is some potential to parallelize the render loop to make this approach faster for high-resolution images.  
@@ -49,3 +49,10 @@ Generating random hemisphere vectors
 
 Non uniform scattering of rays or Lambertian distribution (R) and uniform scattering (L)
 The result on the right is a much accurate representation of diffuse reflection. It also has a tint of the background gradient consisting of blue and white.
+
+## Materials and rendering Reflections
+
+<img alt="materials.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convMaterialSpheres.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" height="1080px">
+
+Materials are classes in the raytracer program with each having a unique scatter method and an albedo value(this determines the attenuation or strength of the scattered ray color, dark materials will absorb most of the light while white materials will reflect most of the light)
+In this image there are 2 material types diffuse and metal. The high definition image shows a very clean reflection of the blue sphere as of now. 

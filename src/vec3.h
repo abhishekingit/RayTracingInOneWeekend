@@ -61,6 +61,11 @@ public:
 		return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
 	}
 
+	bool near_zero() const {
+		auto s = 1e-8;
+		return (std::fabs(e[0]) < s) && (std::fabs(e[1]) < s) && (std::fabs(e[2]) < s);
+	}
+
 };
 
 using point3 = vec3;
@@ -127,6 +132,10 @@ inline vec3 randomVecOnHemisphere(const vec3& surfaceNormal) {
 	else {
 		return -randomVec;
 	}
+}
+
+inline vec3 reflect(const vec3& incVec, const vec3& normal) {
+	return incVec - 2 * dot(incVec, normal) * normal;
 }
 
 #endif // !VEC3_H
