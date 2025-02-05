@@ -62,3 +62,9 @@ Basic gamma transform
 
 Materials are classes in the raytracer program with each having a unique scatter method and an albedo value(this determines the attenuation or strength of the scattered ray color, dark materials will absorb most of the light while white materials will reflect most of the light)
 In this image there are 2 material types diffuse and metal. The high definition image shows a very clean reflection of the blue sphere as of now. 
+
+### Adding Fuzziness in Reflection
+
+<img alt="fuzzSpheres.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convFuzzRef.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Fuzziness is a quality of specific materials which we see in real life. Like metals dont usually have a clean reflection like a glass/mirror but rather this blurred reflection. In this program we are just specifying the fuzziness of the material in main and based on that we are multiplying this fuzz factor with a random unit vector and adding to our normalised reflected ray.
