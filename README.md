@@ -68,3 +68,9 @@ In this image there are 2 material types diffuse and metal. The high definition 
 <img alt="fuzzSpheres.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convFuzzRef.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Fuzziness is a quality of specific materials which we see in real life. Like metals dont usually have a clean reflection like a glass/mirror but rather this blurred reflection. In this program we are just specifying the fuzziness of the material in main and based on that we are multiplying this fuzz factor with a random unit vector and adding to our normalised reflected ray.
+
+### Glass sphere and simple refraction 
+
+<img alt="fuzzSpheres.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convDielectricSphere.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Glass sphere with dielectric material and basic snell's law for refraction
