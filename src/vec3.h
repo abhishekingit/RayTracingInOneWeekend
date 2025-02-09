@@ -138,4 +138,11 @@ inline vec3 reflect(const vec3& incVec, const vec3& normal) {
 	return incVec - 2 * dot(incVec, normal) * normal;
 }
 
+inline vec3 refract(const vec3& refR, const vec3& n, double refIndexRatio) {
+	auto cos_theta = std::fmin(dot(-refR, n), 1.0);
+	vec3 outPerp = refIndexRatio * (refR + cos_theta * n);
+	vec3 outParallel = -std::sqrt(std::fabs(1.0 - outPerp.length_squared())) * n;
+	return outPerp + outParallel;
+}
+
 #endif // !VEC3_H
