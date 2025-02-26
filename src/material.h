@@ -63,14 +63,33 @@ public:
 		attenuation = color(1.0, 1.0, 1.0);
 		double refIndex = rec.front_face ? (1.0 / refractiveIndex) : refractiveIndex;
 		vec3 unitDirection = unit_vector(incRay.direction());
-		vec3 refracted = refract(unitDirection, rec.normal, refIndex);
-		scattered = ray(rec.p, refracted);
+
+		double cosTheta = std::fmin(dot(-unitDirection, rec.normal), 1.0);
+		double sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
+
+		bool canInternallyReflect = refIndex * sinTheta > 1.0;
+		vec3 direction;
+		if (canInternallyReflect || reflectance(cosTheta, refIndex) > randomDouble()) {
+			direction = reflect(unitDirection, rec.normal);
+		}
+		else {
+			direction = refract(unitDirection, rec.normal, refIndex);
+		}
+
+		scattered = ray(rec.p, direction);
 		return true;
 	}
 
 
 private:
 	double refractiveIndex;
+
+
+	static double reflectance(double cosine, double refIndex) {
+		auto r0 = (1 - refIndex) / (1 + refIndex);
+		r0 = r0 * r0;
+		return r0 + (1 - r0) * std::pow((1 - cosine), 5);
+	}
 };
 
 

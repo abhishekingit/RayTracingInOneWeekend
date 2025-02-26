@@ -74,3 +74,10 @@ Fuzziness is a quality of specific materials which we see in real life. Like met
 <img alt="fuzzSpheres.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convDielectricSphere.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Glass sphere with dielectric material and basic snell's law for refraction
+
+### Dielectric spheres with Total internal reflection
+
+<img alt="dielectricRefSphere.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convTotRefImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Dielectric sphere with total internal reflection and schlick approximation for adding fresnel reflectance to the dielectric sphere.
+the dielectric sphere consists of another hollow sphere.
