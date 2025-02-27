@@ -81,3 +81,9 @@ Glass sphere with dielectric material and basic snell's law for refraction
 
 Dielectric sphere with total internal reflection and schlick approximation for adding fresnel reflectance to the dielectric sphere.
 the dielectric sphere consists of another hollow sphere.
+
+### Reposition Camera 
+
+<img alt="reposCam.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convPosCamImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Added vertical fov and defined camera frame vectors to view the scene from different positions. Repositioning camera is simple by changing the 'lookFrom' and 'lookAt' vectors in the main.
