@@ -87,3 +87,9 @@ the dielectric sphere consists of another hollow sphere.
 <img alt="reposCam.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convPosCamImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Added vertical fov and defined camera frame vectors to view the scene from different positions. Repositioning camera is simple by changing the 'lookFrom' and 'lookAt' vectors in the main.
+
+### Glass sphere render
+
+<img alt="GlassCam.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convGlassCamImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+render the refracting glass sphere. This is a much better render of the glass sphere and also a better vfov which makes the details visible. 

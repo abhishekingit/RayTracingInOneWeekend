@@ -14,7 +14,7 @@ public:
 		auto c = centerVec.length_squared() - radius * radius;
 		auto SphereEqDiscriminant = h * h - a * c;
 
-		if (SphereEqDiscriminant < 0.0) {
+		if (SphereEqDiscriminant < 0) {
 			return false;
 		}
 
