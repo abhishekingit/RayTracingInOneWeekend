@@ -92,4 +92,4 @@ Added vertical fov and defined camera frame vectors to view the scene from diffe
 
 <img alt="GlassCam.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/main/outputImages/convGlassCamImage.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
-render the refracting glass sphere. This is a much better render of the glass sphere and also a better vfov which makes the details visible. 
+Rendered the refracting glass sphere. This is a much better render of the glass sphere and also a better vfov which makes the details visible. 
