@@ -84,7 +84,9 @@ private:
 		auto pixel_sample = pixel00_loc + ((i + offset.x()) * pixelDeltaU) + ((j + offset.y()) * pixelDeltaV);
 		auto rayOrigin = center;
 		auto rayDir = pixel_sample - rayOrigin;
-		return ray(rayOrigin, rayDir);
+		auto rayTime = randomDouble();
+
+		return ray(rayOrigin, rayDir, rayTime);
 	}
 
 	vec3 sample_square() const {

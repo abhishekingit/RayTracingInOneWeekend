@@ -5,10 +5,13 @@
 
 class sphere : public hittable_object {
 public:
-	sphere(const point3& center, double radius, std::shared_ptr<material> mat) : center(center), radius(std::fmax(0, radius)), mat(mat)  {}
+	sphere(const point3& staticCenter, double radius, std::shared_ptr<material> mat) : center(staticCenter, vec3(0,0,0)), radius(std::fmax(0, radius)), mat(mat)  {}
+
+	sphere(const point3& center1, const point3& center2, double radius, std::shared_ptr<material> mat) : center(center1, center2 - center1), radius(std::fmax(0, radius)), mat(mat) {}
 	
 	bool hit(const ray& r, interval tInterval, hit_record& rec) const override {
-		vec3 centerVec = center - r.origin();
+		point3 currentCenter = center.aT(r.time());
+		vec3 centerVec = currentCenter - r.origin();
 		auto a = r.direction().length_squared();
 		auto h = dot(r.direction(), centerVec);
 		auto c = centerVec.length_squared() - radius * radius;
@@ -31,7 +34,7 @@ public:
 
 		rec.t = root;
 		rec.p = r.aT(rec.t);
-		vec3 outward_normal = (rec.p - center) / radius;
+		vec3 outward_normal = (rec.p - currentCenter) / radius;
 		rec.set_face_normal(r, outward_normal);
 		rec.mat = mat;
 
@@ -41,7 +44,7 @@ public:
 
 
 private:
-	point3 center;
+	ray center;
 	double radius;
 	std::shared_ptr<material> mat;
 
