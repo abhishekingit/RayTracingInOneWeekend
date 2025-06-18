@@ -2,6 +2,7 @@
 #define SPHERE_H
 
 #include "hittableObject.h"
+#include <cmath>
 
 class sphere : public hittable_object {
 public:
@@ -36,9 +37,18 @@ public:
 		rec.p = r.aT(rec.t);
 		vec3 outward_normal = (rec.p - currentCenter) / radius;
 		rec.set_face_normal(r, outward_normal);
+		getSphereUV(outward_normal, rec.u, rec.v);
 		rec.mat = mat;
 
 		return true;
+	}
+
+	static void getSphereUV(const point3& p, double& u, double& v) {
+		auto theta = std::acos(-p.y());
+		auto phi = std::atan2(-p.z(), p.x()) + pi;
+
+		u = phi / (2 * pi);
+		v = theta / pi;
 	}
 
 

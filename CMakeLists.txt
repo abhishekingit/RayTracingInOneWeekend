@@ -17,5 +17,11 @@ add_executable (RayTracingInOneWeekend
 	src/commonConstants.h 
 	src/interval.h 
 	src/camera.h 
-	src/material.h)
+	src/material.h 
+	src/rtwstbimage.h
+	src/perlin.h)
 
+target_include_directories(
+	RayTracingInOneWeekend PUBLIC
+	3rdParty/stb_imageloader
+)

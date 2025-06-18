@@ -4,6 +4,8 @@
 #include "color.h"
 #include <memory>
 #include <cmath>
+#include <rtwstbimage.h>
+#include "perlin.h"
 
 class texture {
 public:
@@ -57,6 +59,40 @@ private:
 
 };
 
+class imageTexture : public texture {
+public:
+	imageTexture(const char* filename) : image(filename) {}
+
+	color value(double u, double v, const point3& p) const override {
+		if (image.height() <= 0) return color(0, 1, 1);
+		u = interval(0, 1).clamp(u);
+		v = 1.0 - interval(0, 1).clamp(v);
+		auto i = int(u * image.width());
+		auto j = int(v * image.height());
+		auto pixel = image.pixel_data(i, j);
+
+		auto color_scale = 1.0 / 255.0;
+		return color(color_scale * pixel[0], color_scale * pixel[1], color_scale * pixel[2]);
+	}
+
+
+
+private:
+	rtw_image image;
+};
+
+class noiseTexture : public texture {
+public:
+	noiseTexture() {}
+
+	color value(double u, double v, const point3& p) const override {
+		return color(1, 0.4, 0.2) * noise.noise(p);
+	}
+
+
+private:
+	perlin noise;
+};
 
 
 #endif // !TEXTURE_H

@@ -11,3 +11,9 @@ Motion blur for moving spheres
 <img alt="checkeredTextures.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convTextureGround.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Procedural checkered Texture mapping of ground
+
+### Perlin Noise
+
+<img alt="perlinNoise.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convImageTex.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Basic Perlin Noise texture for sphere
