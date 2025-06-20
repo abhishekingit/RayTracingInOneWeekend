@@ -23,3 +23,10 @@ Basic Perlin Noise texture for sphere
 <img alt="smoothPerlinNoise.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convSmoothPerlin.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Perlin Noise texture with trilinear interpolation 
+
+
+### Additional Smoothing and frequency bump of noise
+
+<img alt="hermiteCubicSmooth.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convHermiteCubicSmooth.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Hermite Cubic smoothing and adding scale to increase noise frequency of texture

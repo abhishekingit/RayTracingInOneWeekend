@@ -11,7 +11,7 @@ int main() {
 	hittable_list world;
 
 	//auto material_ground = std::make_shared<lambertian>(color(0.4, 0.1, 0.1));
-	auto perlinNoise = std::make_shared<noiseTexture>();
+	auto perlinNoise = std::make_shared<noiseTexture>(8);
 	auto perlinTexture = std::make_shared<lambertian>(perlinNoise);
 
 
