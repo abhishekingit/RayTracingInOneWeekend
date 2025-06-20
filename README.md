@@ -17,3 +17,9 @@ Procedural checkered Texture mapping of ground
 <img alt="perlinNoise.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convImageTex.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
 
 Basic Perlin Noise texture for sphere
+
+### Smooth Perlin Noise
+
+<img alt="smoothPerlinNoise.png" src="https://github.com/abhishekingit/RayTracingInOneWeekend/blob/RayTracingTheNextWeek/outputImages/convSmoothPerlin.png?raw=true" data-hpc="true" class="Box-sc-g0xbh4-0 kzRgrI" width="1024" height="576px">
+
+Perlin Noise texture with trilinear interpolation 
